@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+<% end %>
+<% if @users.any? %>
+    <h1>USERS:</h1>
+    <% @users.each do |user|%>
+        <div>
+            <p>__________________________________________</p>
+            <h2><%= user.username %></h2>
+            <p><%= user.email %> </p>
+            <%= link_to "Show user", user %>
+        </div>
+    <% end %>
+<% else %>
+    <h1>NO USERS REGISTERED.</h1>
+<% end %>
+<div>
+    <p>__________________________________________</p>
+    <%= link_to "Create new User",  new_user_path %>
+</div>

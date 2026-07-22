@@ -1,0 +1,20 @@
+<% if flash[:alert] %>
+    <p><%= flash[:alert]%></p>
+<% end %>
+<%= form_with model: @user do |user_form| %>
+    <div> 
+        <%= user_form.label :username, "Username:" %>
+        <%= user_form.text_field :username, value: @user.username %></div>
+    <div>
+        <%= user_form.label :email, "Email:" %>
+        <%= user_form.email_field :email, value: @user.email %>
+    </div>
+    <div>
+        <%= user_form.label :password, "Password:" %>
+        <%= user_form.password_field :password, value: @user.password %>
+    </div>
+   
+    <%= user_form.submit "Accept changes" %>
+<% end %>
+
+<%= link_to "Cancel",  users_path %>

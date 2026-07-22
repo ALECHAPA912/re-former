@@ -1,0 +1,12 @@
+<% if flash[:notice] %>
+    <p><%= flash[:notice]%></p>
+<% end %>
+<h1><%= @user.username %></h1>
+<p><%= @user.email %></p>
+<%= link_to "Delete User", user_path(@user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+<br>
+<br>
+<%= link_to "Edit user", controller: "users", action: "edit", id: @user %>
+<br>
+<br>
+<%= link_to "Back to menu", users_path %>
