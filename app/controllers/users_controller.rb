@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user, notice: "User CREATED succesfully!"
     else
-      flash.now[:alert] = "Error creating new user. Complete the empty fields!"
+      flash.now[:alert] = "#{@user.errors.full_messages}"
       render :new, status: :unprocessable_entity
     end
   end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user, notice: "User EDITED succesfully!"
     else
-      flash.now[:alert] = "Error editing this user. Complete the empty fields!"
+      flash.now[:alert] = "#{@user.errors.full_messages}"
       render :edit, status: :unprocessable_entity
     end
   end
